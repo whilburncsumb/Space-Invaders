@@ -12,6 +12,13 @@ public class Enemy : MonoBehaviour
       Debug.Log("Ouch!");
       Destroy(collision.gameObject);
       OnEnemyDeath.Invoke(points);
-      Destroy(gameObject);
+      // Destroy(gameObject);
+      GetComponent<Animator>().SetTrigger("killTrigger");
+    }
+    
+    void DestroyEnemy()
+    {
+        Debug.Log("enemy explosion done");
+        Destroy(this.gameObject);
     }
 }

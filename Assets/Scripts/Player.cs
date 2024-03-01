@@ -24,11 +24,18 @@ public class Player : MonoBehaviour
     {
       if (Input.GetKeyDown(KeyCode.Space))
       {
+        GetComponent<Animator>().SetTrigger("ShootTrigger");  
+        
         GameObject shot = Instantiate(bullet, shottingOffset.position, Quaternion.identity);
         Debug.Log("Bang!");
 
         Destroy(shot, 3f);
 
       }
+    }
+
+    void AnimationFrameCallback()
+    {
+      Debug.Log("Somethign happened in the animation");
     }
 }

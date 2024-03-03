@@ -11,7 +11,6 @@ public class WallScript : MonoBehaviour
         {
             // Signal the grid controller that an enemy has touched the wall
             gridController.HandleWallCollision();
-            // Debug.Log("Enemy hit the edge, fleet will reverse.");
         }
     }
     

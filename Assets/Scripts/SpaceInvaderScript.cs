@@ -1,23 +1,29 @@
-﻿
-using System;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpaceInvader : MonoBehaviour
 {
     public int invaderType = 1;
-    public int points = 20;
-    public static float xMax = 9;
-    public delegate void EnemyDeath(int pointValue);
-    public static event EnemyDeath OnEnemyDeath;
-    
-    void OnCollisionEnter2D(Collision2D collision)
+    public int points;
+    // Declare delegate for the death event
+    public delegate void DeathEventHandler();
+    // Declare event for the death event
+    public event DeathEventHandler OnDeath;
+
+    // Method to call when the space invader dies
+    public void Die()
     {
-      // Debug.Log("Ouch!");
-      Destroy(collision.gameObject);
-      OnEnemyDeath.Invoke(points);
-      // Destroy(gameObject);
-      GetComponent<Animator>().SetTrigger("killTrigger");
+        // Raise the death event
+        OnDeath?.Invoke();
+        // Perform other death-related actions...
+    }
+    
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("PlayerBullet"))
+        {
+                  Destroy(other.gameObject);
+                  GetComponent<Animator>().SetTrigger("killTrigger");
+        }
     }
     
     public void setType(int input)
@@ -51,5 +57,11 @@ public class SpaceInvader : MonoBehaviour
     {
         Debug.Log("enemy explosion done");
         Destroy(this.gameObject);
+    }
+    
+    void OnDestroy()
+    {
+        // Call the Die method when the space invader is destroyed
+        Die();
     }
 }

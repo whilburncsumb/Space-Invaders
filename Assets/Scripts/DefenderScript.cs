@@ -2,13 +2,12 @@
 
 public class Defender : MonoBehaviour
 {
+  public GameObject invader;
   public GameObject bullet;
-
   public Transform shottingOffset;
 
   private void Start()
   {
-    Enemy.OnEnemyDeath += EnemyOnOnEnemyDeath;
 
     void EnemyOnOnEnemyDeath(int pointValue)
     {

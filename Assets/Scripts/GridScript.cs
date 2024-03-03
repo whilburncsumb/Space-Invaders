@@ -1,4 +1,3 @@
-
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -25,6 +24,7 @@ public class GridScript : MonoBehaviour
 
     private float currentInterval; // Current interval between movements
     private bool reverse = false;
+    private int invadersLeft;
 
     
     // Start is called before the first frame update
@@ -49,7 +49,6 @@ public class GridScript : MonoBehaviour
     {
         // Reset position
         transform.position = this.startPosition;
-        // Instantiate(rockPrefab, newPos,Quaternion.identity,environmentRoot);
         // Calculate the starting position for the grid
         Vector2 startPosition = transform.position - new Vector3(width * (columnCount - 1) / 2f, height * (rowCount - 1) / 2f);
 
@@ -63,6 +62,7 @@ public class GridScript : MonoBehaviour
 
                 // Spawn the prefab at the calculated position
                 var invader = Instantiate(spaceInvader, position, Quaternion.identity, transform);
+                invader.GetComponent<SpaceInvader>().OnDeath += OnInvaderDeath;//subscribe to death of the invader
                 if (row == 0)
                 {
                     invader.GetComponent<SpaceInvader>().setType(0);
@@ -77,6 +77,14 @@ public class GridScript : MonoBehaviour
                 }
             }
         }
+        invadersLeft = rowCount * columnCount;
+    }
+    
+    void OnInvaderDeath()
+    {
+        // Handle space invader death event...
+        invadersLeft--;
+        advanceSpeed += 0.1f;
     }
     public void HandleWallCollision()
      {

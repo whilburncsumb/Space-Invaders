@@ -1,21 +1,25 @@
 ﻿
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpaceInvader : MonoBehaviour
 {
     public int invaderType = 1;
     public int points = 20;
+    public static float xMax = 9;
     public delegate void EnemyDeath(int pointValue);
     public static event EnemyDeath OnEnemyDeath;
+    
     void OnCollisionEnter2D(Collision2D collision)
     {
-      Debug.Log("Ouch!");
+      // Debug.Log("Ouch!");
       Destroy(collision.gameObject);
       OnEnemyDeath.Invoke(points);
       // Destroy(gameObject);
       GetComponent<Animator>().SetTrigger("killTrigger");
     }
-
+    
     public void setType(int input)
     {
         invaderType = input;

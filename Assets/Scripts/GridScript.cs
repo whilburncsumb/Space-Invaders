@@ -1,4 +1,5 @@
 
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -17,6 +18,15 @@ public class GridScript : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public GameObject barrier;
     
+    public float initialInterval = 1f; // Initial interval between movements
+    public float minInterval = 0.1f; // Minimum interval between movements
+    public float intervalDecreaseRate = 0.1f; // Rate at which the interval decreases
+    public float movementIncreaseRate = 0.1f; // Rate at which the movements increase
+
+    private float currentInterval; // Current interval between movements
+    private bool reverse = false;
+
+    
     // Start is called before the first frame update
     void Start()
     {        
@@ -25,13 +35,15 @@ public class GridScript : MonoBehaviour
         goingLeft = true;
         advanceSpeed = startSpeed;
         spawnEnemies();
+        StartCoroutine(TriggerMovements());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        reverse = false;
     }
+
 
     private void spawnEnemies()
     {
@@ -66,4 +78,48 @@ public class GridScript : MonoBehaviour
             }
         }
     }
+    public void HandleWallCollision()
+     {
+         if (reverse)
+         {
+             return;
+         }
+         reverse = true;
+         goingLeft = !goingLeft;
+         Debug.Log("Moving down by " + advanceSpeed);
+         transform.Translate(Vector3.down * advanceSpeed);
+     }
+    
+    IEnumerator TriggerMovements()
+    {
+        // Initialize the current interval
+        currentInterval = initialInterval;
+
+        while (true)
+        {
+            // Perform movements here
+            if (goingLeft)
+            {
+                Debug.Log("Moving left by " + advanceSpeed);
+                transform.Translate(Vector3.left * advanceSpeed);
+            }
+            else
+            {
+                Debug.Log("Moving right by " + advanceSpeed);
+                transform.Translate(Vector3.right * advanceSpeed);
+            }
+            
+            // Adjust interval and movement based on elapsed time
+            currentInterval -= intervalDecreaseRate * Time.deltaTime;
+            float movementAmount = movementIncreaseRate * Time.deltaTime;
+            advanceSpeed += movementAmount;
+
+            // Clamp interval to minimum value
+            currentInterval = Mathf.Max(currentInterval, minInterval);
+
+            // Wait for the current interval
+            yield return new WaitForSeconds(currentInterval);
+        }
+    }
+    
 }

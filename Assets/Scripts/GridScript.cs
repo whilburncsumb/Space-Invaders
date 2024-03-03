@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -19,22 +20,24 @@ public class GridScript : MonoBehaviour
     
     public float initialInterval = 1f; // Initial interval between movements
     public float minInterval = 0.1f; // Minimum interval between movements
-    public float intervalDecreaseRate = 0.1f; // Rate at which the interval decreases
-    public float movementIncreaseRate = 0.1f; // Rate at which the movements increase
 
     private float currentInterval; // Current interval between movements
     private bool reverse = false;
     private int invadersLeft;
+    private int score;
+    private int highScore;
 
     
     // Start is called before the first frame update
     void Start()
     {        
-        scoreText.enabled = false; 
         startPosition = transform.position;
         goingLeft = true;
         advanceSpeed = startSpeed;
         spawnEnemies();
+        score = 0;
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        setScore();
         StartCoroutine(TriggerMovements());
     }
 
@@ -80,23 +83,42 @@ public class GridScript : MonoBehaviour
         invadersLeft = rowCount * columnCount;
     }
     
-    void OnInvaderDeath()
+    void OnInvaderDeath(int pointValue)
     {
         // Handle space invader death event...
         invadersLeft--;
-        advanceSpeed += 0.1f;
+        advanceSpeed += 0.01f;
+        currentInterval -= 0.01f;
+        score += pointValue;
+        //Set new high scores
+        highScore = Math.Max(highScore, score);
+        if (highScore > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            // Debug.Log("setting new high score of " +highScore);
+            PlayerPrefs.SetInt("HighScore",highScore);
+            PlayerPrefs.Save();
+        }
+        setScore();
+    }
+
+    private void setScore()
+    {
+        string scoreString = score.ToString("D5");
+        string highscoreString = highScore.ToString("D5");
+        string text = "SCORE: " + scoreString + "\tHIGH SCORE: " + highscoreString;
+        scoreText.text = text;
     }
     public void HandleWallCollision()
-     {
-         if (reverse)
-         {
-             return;
-         }
-         reverse = true;
-         goingLeft = !goingLeft;
-         Debug.Log("Moving down by " + advanceSpeed);
-         transform.Translate(Vector3.down * advanceSpeed);
-     }
+    {
+        if (reverse)
+        {
+         return;
+        }
+        reverse = true;
+        goingLeft = !goingLeft;
+        // Debug.Log("Moving down by " + advanceSpeed);
+        transform.Translate(Vector3.down * advanceSpeed);
+    }
     
     IEnumerator TriggerMovements()
     {
@@ -108,20 +130,14 @@ public class GridScript : MonoBehaviour
             // Perform movements here
             if (goingLeft)
             {
-                Debug.Log("Moving left by " + advanceSpeed);
+                // Debug.Log("Moving left by " + advanceSpeed);
                 transform.Translate(Vector3.left * advanceSpeed);
             }
             else
             {
-                Debug.Log("Moving right by " + advanceSpeed);
+                // Debug.Log("Moving right by " + advanceSpeed);
                 transform.Translate(Vector3.right * advanceSpeed);
             }
-            
-            // Adjust interval and movement based on elapsed time
-            currentInterval -= intervalDecreaseRate * Time.deltaTime;
-            float movementAmount = movementIncreaseRate * Time.deltaTime;
-            advanceSpeed += movementAmount;
-
             // Clamp interval to minimum value
             currentInterval = Mathf.Max(currentInterval, minInterval);
 

@@ -1,8 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEditor.U2D;
-using UnityEngine.TextCore.Text;
-using UnityEngine.U2D;
 
 public class SpriteText : MonoBehaviour
 {

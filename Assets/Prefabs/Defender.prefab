@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4447747329123161577}
   - component: {fileID: 3791936555625136708}
-  - component: {fileID: 8017684208409169088}
   - component: {fileID: 5447409687875046624}
   m_Layer: 0
   m_Name: Defender
@@ -80,20 +79,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8017684208409169088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129043850064504577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cdcdc8f506968548b9b30cef6fdf27c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 2457785739244962049, guid: d4511b14daaa37c468a74ed386b2583f, type: 3}
-  shottingOffset: {fileID: 8125335893176967482}
 --- !u!212 &5447409687875046624
 SpriteRenderer:
   m_ObjectHideFlags: 0

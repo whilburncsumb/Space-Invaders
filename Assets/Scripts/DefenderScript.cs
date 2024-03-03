@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Defender : MonoBehaviour
 {
@@ -24,13 +21,8 @@ public class Defender : MonoBehaviour
     {
       if (Input.GetKeyDown(KeyCode.Space))
       {
-        GetComponent<Animator>().SetTrigger("ShootTrigger");  
-        
         GameObject shot = Instantiate(bullet, shottingOffset.position, Quaternion.identity);
-        Debug.Log("Bang!");
-
-        Destroy(shot, 3f);
-
+        Destroy(shot, 4f);
       }
     }
 

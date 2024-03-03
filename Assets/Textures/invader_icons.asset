@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
+  m_Name: invader_icons
+  m_EditorClassIdentifier: 
+  hashCode: -1739414972
+  material: {fileID: 8548954465803103251}
+  materialHashCode: 0
+  m_Version: 1.1.0
+  m_FaceInfo:
+    m_FaceIndex: 0
+    m_FamilyName: 
+    m_StyleName: 
+    m_PointSize: 0
+    m_Scale: 0
+    m_UnitsPerEM: 0
+    m_LineHeight: 0
+    m_AscentLine: 0
+    m_CapLine: 0
+    m_MeanLine: 0
+    m_Baseline: 0
+    m_DescentLine: 0
+    m_SuperscriptOffset: 0
+    m_SuperscriptSize: 0
+    m_SubscriptOffset: 0
+    m_SubscriptSize: 0
+    m_UnderlineOffset: 0
+    m_UnderlineThickness: 0
+    m_StrikethroughOffset: 0
+    m_StrikethroughThickness: 0
+    m_TabWidth: 0
+  spriteSheet: {fileID: 2800000, guid: 66234f0ea9ced4b5cafe4f77dda85f23, type: 3}
+  m_SpriteCharacterTable:
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 3
+    m_Scale: 1
+    m_Name: invader-sprites_20
+    m_HashCode: -2113546359
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 2
+    m_Scale: 1
+    m_Name: invader-sprites_2
+    m_HashCode: -1235401575
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 1
+    m_Scale: 1
+    m_Name: invader-sprites_0
+    m_HashCode: -1235401573
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 0
+    m_Scale: 1
+    m_Name: invader-sprites_4
+    m_HashCode: -1235401569
+  m_SpriteGlyphTable:
+  - m_Index: 0
+    m_Metrics:
+      m_Width: 231.37158
+      m_Height: 157.23503
+      m_HorizontalBearingX: -0.5926743
+      m_HorizontalBearingY: 157.5258
+      m_HorizontalAdvance: 231.37158
+    m_GlyphRect:
+      m_X: 866
+      m_Y: 415
+      m_Width: 231
+      m_Height: 157
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 408414478, guid: 66234f0ea9ced4b5cafe4f77dda85f23, type: 3}
+  - m_Index: 1
+    m_Metrics:
+      m_Width: 213.29568
+      m_Height: 160.84964
+      m_HorizontalBearingX: -3.0640273
+      m_HorizontalBearingY: 162.62096
+      m_HorizontalAdvance: 213.29568
+    m_GlyphRect:
+      m_X: 28
+      m_Y: 413
+      m_Width: 213
+      m_Height: 160
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -1781657151, guid: 66234f0ea9ced4b5cafe4f77dda85f23, type: 3}
+  - m_Index: 2
+    m_Metrics:
+      m_Width: 160.87555
+      m_Height: 159.04233
+      m_HorizontalBearingX: -1.5167696
+      m_HorizontalBearingY: 155.14165
+      m_HorizontalAdvance: 160.87555
+    m_GlyphRect:
+      m_X: 502
+      m_Y: 413
+      m_Width: 160
+      m_Height: 159
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -1267507915, guid: 66234f0ea9ced4b5cafe4f77dda85f23, type: 3}
+  - m_Index: 3
+    m_Metrics:
+      m_Width: 239.50574
+      m_Height: 112.95621
+      m_HorizontalBearingX: -3.0155287
+      m_HorizontalBearingY: 112.37151
+      m_HorizontalAdvance: 239.50574
+    m_GlyphRect:
+      m_X: 459
+      m_Y: 49
+      m_Width: 239
+      m_Height: 112
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -270174451, guid: 66234f0ea9ced4b5cafe4f77dda85f23, type: 3}
+  spriteInfoList: []
+  fallbackSpriteAssets: []
+--- !u!21 &8548954465803103251
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TextMeshPro/Sprite
+  m_Shader: {fileID: 4800000, guid: cf81c85f95fe47e1a27f6ae460cf182c, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 66234f0ea9ced4b5cafe4f77dda85f23, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _CullMode: 0
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

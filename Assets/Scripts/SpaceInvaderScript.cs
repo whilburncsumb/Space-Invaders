@@ -19,20 +19,24 @@ public class SpaceInvader : MonoBehaviour
     public void setType(int input)
     {
         invaderType = input;
+        Animator anim = GetComponent<Animator>();
         switch (input)
         {
             case 0:
             {
+                anim.Play("enemyIdle0");
                 points = 10;
                 break;
             }
             case 1:
             {
+                anim.Play("enemyIdle1");
                 points = 20;
                 break;
             }
             case 2:
             {
+                anim.Play("enemyIdle2");
                 points = 30;
                 break;
             }

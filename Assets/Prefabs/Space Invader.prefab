@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5948996942061377388}
   - component: {fileID: 1588871501223333554}
   - component: {fileID: 5591966475290411525}
+  - component: {fileID: -2760571500714478768}
   m_Layer: 0
   m_Name: Space Invader
   m_TagString: Enemy
@@ -152,3 +153,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2760571500714478768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483517710255911465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab136e81faa2c4fc3a61f68ebe59004f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invaderType: 1
+  points: 20

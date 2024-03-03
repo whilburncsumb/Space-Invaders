@@ -9,12 +9,13 @@ public class GridScript : MonoBehaviour
     public int columnCount;
     public float width;//size of the grid
     public float height;
+    private Vector2 startPosition;
     public float startSpeed;//starting movement speed
     public float advanceSpeed;//current movement speed
     public bool goingLeft;
     public GameObject spaceInvader;
     public GameObject player;
-    public TextMeshProUGUI score;
+    public TextMeshProUGUI scoreText;
     public GameObject barrier;
     
     // Start is called before the first frame update
@@ -23,6 +24,8 @@ public class GridScript : MonoBehaviour
         goingLeft = true;
         advanceSpeed = startSpeed;
         spawnEnemies();
+        scoreText.enabled = false;
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -33,9 +36,9 @@ public class GridScript : MonoBehaviour
 
     private void spawnEnemies()
     {
-        // Vector3 newPos = new Vector3(column+.5f,row+.5f,0f); 
+        // Reset position
+        transform.position = this.startPosition;
         // Instantiate(rockPrefab, newPos,Quaternion.identity,environmentRoot);
-        // break;
         // Calculate the starting position for the grid
         Vector2 startPosition = transform.position - new Vector3(width * (columnCount - 1) / 2f, height * (rowCount - 1) / 2f);
 

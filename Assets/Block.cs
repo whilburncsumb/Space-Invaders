@@ -16,13 +16,13 @@ public class Block : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        rend.sprite = animationFrames[health+1];
+        rend.sprite = animationFrames[health-1];
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("block hit!");
-        if (other.collider.CompareTag("EnemyBullet") || other.collider.CompareTag("PlayerBullet"))
+        if (other.CompareTag("EnemyBullet") || other.CompareTag("PlayerBullet"))
         {
             Destroy(other.gameObject);
             lowerHealth();

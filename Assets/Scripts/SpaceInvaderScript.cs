@@ -27,10 +27,10 @@ public class SpaceInvader : MonoBehaviour
         anim.Play("enemyDeath");
     }
     
-    void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.Log("Invader entered collision");
-        if (other.collider.CompareTag("PlayerBullet"))
+        if (other.CompareTag("PlayerBullet"))
         {
             Destroy(other.gameObject);
             GetComponent<Animator>().SetTrigger("killTrigger");

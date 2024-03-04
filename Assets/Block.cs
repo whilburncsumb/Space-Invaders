@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,5 +17,15 @@ public class Block : MonoBehaviour
             Destroy(this.gameObject);
         }
         rend.sprite = animationFrames[health+1];
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("block hit!");
+        if (other.collider.CompareTag("EnemyBullet") || other.collider.CompareTag("PlayerBullet"))
+        {
+            Destroy(other.gameObject);
+            lowerHealth();
+        }
     }
 }

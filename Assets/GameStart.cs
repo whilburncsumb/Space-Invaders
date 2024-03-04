@@ -6,6 +6,7 @@ public class GameStart : MonoBehaviour
 {
     public GameObject grid;
     public GameObject defender;
+    public GameObject barricade;
     public bool gameActive = false;
     
     // Start is called before the first frame update
@@ -19,8 +20,10 @@ public class GameStart : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !gameActive)
         {
-            // Instantiate(grid, new Vector3(0, 6, 0),Quaternion.identity);
-            // Instantiate(defender, new Vector3(0, -4, 0),Quaternion.identity);
+            Instantiate(barricade, new Vector3(-5, -3, 0),Quaternion.identity);
+            Instantiate(barricade, new Vector3(-2, -3, 0),Quaternion.identity);
+            Instantiate(barricade, new Vector3(2, -3, 0),Quaternion.identity);
+            Instantiate(barricade, new Vector3(5, -3, 0),Quaternion.identity);
             grid.SetActive(true);
             defender.SetActive(true);
             gameActive = true;

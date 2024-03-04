@@ -167,3 +167,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invaderType: 1
   points: 20
+  spawnChance: 1
+  bullet: {fileID: 2457785739244962049, guid: 8a4523de74c844970865ba324fda1542, type: 3}

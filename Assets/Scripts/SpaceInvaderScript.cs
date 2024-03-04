@@ -1,10 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpaceInvader : MonoBehaviour
 {
     public int invaderType = 1;
     public int points;
+    public float spawnChance;
+    public GameObject bullet;
     private Animator anim;
     // Declare delegate for the death event
     public delegate void DeathEventHandler(int pointValue);
@@ -34,7 +37,21 @@ public class SpaceInvader : MonoBehaviour
             Die();
         }
     }
-    
+
+    private void FixedUpdate()
+    {
+        // Generate a random number between 0 and 99 (inclusive)
+        int randomNumber = Random.Range(0, 1000);
+
+        // Check if the random number is within the spawn chance range
+        if (randomNumber < spawnChance)
+        {
+            // Spawn the bullet prefab
+            GameObject shot = Instantiate(bullet, transform.position, Quaternion.identity);
+            Destroy(shot, 3f);
+        }
+    }
+
     public void setType(int input)
     {
         invaderType = input;

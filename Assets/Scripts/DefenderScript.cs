@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Defender : MonoBehaviour
 {
@@ -6,6 +7,13 @@ public class Defender : MonoBehaviour
   public GameObject bullet;
   public Transform shottingOffset;
   public float moveSpeed;
+  public Animator anim;
+
+  private void Start()
+  {
+    anim = GetComponent<Animator>();
+    anim.speed = 0;
+  }
 
   // Update is called once per frame
     void Update()
@@ -27,4 +35,18 @@ public class Defender : MonoBehaviour
       }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+      Debug.Log("Defender touches trigger");
+      if (other.CompareTag("EnemyBullet"))
+      {
+        //play death animation
+        anim.speed = 1;
+      }
+    }
+
+    public void Die()
+    {
+      Destroy(this.gameObject);
+    }
 }

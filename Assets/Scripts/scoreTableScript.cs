@@ -11,7 +11,8 @@ public class SpriteText : MonoBehaviour
                       $"<sprite=0> =? MYSTERY\n" +
                       $"<sprite=1>=30 POINTS\n" +
                       $"<sprite=2>=20 POINTS\n" +
-                      $"<sprite=3>=10 POINTS"; 
+                      $"<sprite=3>=10 POINTS\n\n" + 
+                      $"PRESS SPACE TO BEGIN"; 
 
         GetComponent<TextMeshProUGUI>().text = text;
     }

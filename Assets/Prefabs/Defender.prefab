@@ -149,6 +149,7 @@ MonoBehaviour:
   bullet: {fileID: 2457785739244962049, guid: c56c731cbfb764dbcac413b6a6dfb545, type: 3}
   shottingOffset: {fileID: 8125335893176967482}
   moveSpeed: 8
+  anim: {fileID: 0}
 --- !u!95 &7028526960243600040
 Animator:
   serializedVersion: 5

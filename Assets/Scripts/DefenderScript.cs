@@ -37,11 +37,12 @@ public class Defender : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-      Debug.Log("Defender touches trigger");
+      // Debug.Log("Defender touches trigger");
       if (other.CompareTag("EnemyBullet"))
       {
         //play death animation
         anim.speed = 1;
+        moveSpeed = 0;
       }
     }
 

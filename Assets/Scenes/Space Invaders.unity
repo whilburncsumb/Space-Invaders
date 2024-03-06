@@ -1054,7 +1054,7 @@ MonoBehaviour:
   spaceInvader: {fileID: 7483517710255911465, guid: 3feeff0f6602b4a9c9fb2d8b9b2038a1, type: 3}
   player: {fileID: 129043850064504577, guid: 2912b8d7bd1574362bbcca52ea4a2af2, type: 3}
   scoreText: {fileID: 1369001421}
-  barrier: {fileID: 0}
+  barrier: {fileID: 544336313388960614, guid: b4753a699df0e42168ecd86703e62a4c, type: 3}
   initialInterval: 1
   minInterval: 0.1
 --- !u!4 &1461287913

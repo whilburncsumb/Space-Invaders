@@ -26,18 +26,13 @@ public class FlyingSaucer : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.Log("Invader entered collision");
-        if (other.CompareTag("PlayerBullet"))
+        if (other.CompareTag("PlayerBullet") && !stop)
         {
             Destroy(other.gameObject);
             anim.SetTrigger("killTrigger");
             Die();
             stop = true;
         }
-    }
-    
-    public void setType(int input)
-    {
-        points = 100;
     }
 
     private void FixedUpdate()

@@ -154,7 +154,7 @@ public class GridScript : MonoBehaviour
             {
                 // Spawn a saucer
                 GameObject bonusInvader = Instantiate(saucer, saucerTransform, Quaternion.identity);
-                bonusInvader.GetComponent<SpaceInvader>().OnDeath += OnInvaderDeath;//subscribe to death of the invader
+                bonusInvader.GetComponent<FlyingSaucer>().OnDeath += OnInvaderDeath;//subscribe to death of the invader
                 Destroy(bonusInvader, 8f);
             }
             

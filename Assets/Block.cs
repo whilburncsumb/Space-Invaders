@@ -12,11 +12,15 @@ public class Block : MonoBehaviour
     {
         SpriteRenderer rend = GetComponent<SpriteRenderer>();
         health--;
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(this.gameObject);
         }
-        rend.sprite = animationFrames[health-1];
+        else
+        {
+           rend.sprite = animationFrames[health-1]; 
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)

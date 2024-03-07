@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GridScript : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class GridScript : MonoBehaviour
     public float width;//size of the grid
     public float height;
     private Vector2 startPosition;
+    public Vector3 saucerTransform;
     public float startSpeed;//starting movement speed
     public float advanceSpeed;//current movement speed
     public bool goingLeft;
     public GameObject spaceInvader;
+    public GameObject saucer;
     public GameObject player;
     public TextMeshProUGUI scoreText;
     public GameObject barrier;
@@ -94,9 +97,12 @@ public class GridScript : MonoBehaviour
     {
         // Handle space invader death event...
         sounds.Play();
-        invadersLeft--;
-        advanceSpeed += 0.01f;
-        currentInterval -= 0.01f;
+        if (pointValue < 100)
+        {
+            invadersLeft--;
+            advanceSpeed += 0.01f;
+            currentInterval -= 0.01f;
+        }
         score += pointValue;
         //Set new high scores
         highScore = Math.Max(highScore, score);
@@ -109,7 +115,7 @@ public class GridScript : MonoBehaviour
         setScore();
         //Speed up music
         float ratio = 1 - ((float)invadersLeft / (float)maxInvaders);
-        Debug.Log("Ratio: "+ratio);
+        // Debug.Log("Ratio: "+ratio);
         pitch = Mathf.Lerp(1f, 2f, ratio);
         music.pitch = pitch;
     }
@@ -140,6 +146,18 @@ public class GridScript : MonoBehaviour
 
         while (true)
         {
+            //Chance to spawn a saucer
+            int randomNumber = Random.Range(0, 1000);
+
+            // Check if the random number is within the spawn chance range
+            if (randomNumber < 100 || Input.GetKey(KeyCode.E))
+            {
+                // Spawn a saucer
+                GameObject bonusInvader = Instantiate(saucer, saucerTransform, Quaternion.identity);
+                bonusInvader.GetComponent<SpaceInvader>().OnDeath += OnInvaderDeath;//subscribe to death of the invader
+                Destroy(bonusInvader, 8f);
+            }
+            
             // Perform movements here
             if (goingLeft)
             {

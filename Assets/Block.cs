@@ -21,7 +21,7 @@ public class Block : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("block hit!");
+        // Debug.Log("block hit!");
         if (other.CompareTag("EnemyBullet") || other.CompareTag("PlayerBullet"))
         {
             Destroy(other.gameObject);

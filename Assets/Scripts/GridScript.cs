@@ -17,13 +17,17 @@ public class GridScript : MonoBehaviour
     public GameObject player;
     public TextMeshProUGUI scoreText;
     public GameObject barrier;
+    public AudioSource sounds;
+    public AudioSource music;
+    public float pitch;
     
     public float initialInterval = 1f; // Initial interval between movements
     public float minInterval = 0.1f; // Minimum interval between movements
 
     private float currentInterval; // Current interval between movements
     private bool reverse = false;
-    private int invadersLeft;
+    public int maxInvaders;
+    public int invadersLeft;
     private int score;
     private int highScore;
 
@@ -39,6 +43,7 @@ public class GridScript : MonoBehaviour
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         setScore();
         StartCoroutine(TriggerMovements());
+        pitch = 1;
     }
 
     // Update is called once per frame
@@ -80,12 +85,15 @@ public class GridScript : MonoBehaviour
                 }
             }
         }
+
+        maxInvaders = rowCount * columnCount;
         invadersLeft = rowCount * columnCount;
     }
     
     void OnInvaderDeath(int pointValue)
     {
         // Handle space invader death event...
+        sounds.Play();
         invadersLeft--;
         advanceSpeed += 0.01f;
         currentInterval -= 0.01f;
@@ -99,6 +107,11 @@ public class GridScript : MonoBehaviour
             PlayerPrefs.Save();
         }
         setScore();
+        //Speed up music
+        float ratio = 1 - ((float)invadersLeft / (float)maxInvaders);
+        Debug.Log("Ratio: "+ratio);
+        pitch = Mathf.Lerp(1f, 2f, ratio);
+        music.pitch = pitch;
     }
 
     private void setScore()

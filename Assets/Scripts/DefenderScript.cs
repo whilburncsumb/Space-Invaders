@@ -5,6 +5,7 @@ public class Defender : MonoBehaviour
 {
   public GameObject invader;
   public GameObject bullet;
+  public GameObject grid;
   public Transform shottingOffset;
   public float moveSpeed;
   public Animator anim;
@@ -49,6 +50,7 @@ public class Defender : MonoBehaviour
         moveSpeed = 0;
         _audio.clip = explosion;
         _audio.Play();
+        grid.GetComponent<GridScript>().TriggerShake(2f);
       }
     }
 

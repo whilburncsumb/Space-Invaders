@@ -15,6 +15,12 @@ public class GridScript : MonoBehaviour
     public float startSpeed;//starting movement speed
     public float advanceSpeed;//current movement speed
     public bool goingLeft;
+    public GameObject mainCamera;
+    private float shakeDuration;
+    private float shakeIntensity;
+    private float shakeStartTime;
+    private Vector3 cameraHomePosition;
+    
     public GameObject spaceInvader;
     public GameObject saucer;
     public GameObject player;
@@ -47,12 +53,15 @@ public class GridScript : MonoBehaviour
         setScore();
         StartCoroutine(TriggerMovements());
         pitch = 1;
+        cameraHomePosition = mainCamera.transform.position;
+        shakeIntensity = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         reverse = false;
+        Shake();
     }
 
 
@@ -103,6 +112,7 @@ public class GridScript : MonoBehaviour
             advanceSpeed += 0.01f;
             currentInterval -= 0.01f;
         }
+        TriggerShake(0.5f);
         score += pointValue;
         //Set new high scores
         highScore = Math.Max(highScore, score);
@@ -118,6 +128,35 @@ public class GridScript : MonoBehaviour
         // Debug.Log("Ratio: "+ratio);
         pitch = Mathf.Lerp(1f, 2f, ratio);
         music.pitch = pitch;
+    }
+    
+    private void Shake()
+    {
+        float shakeTime = shakeDuration - (Time.time - shakeStartTime);
+        if (shakeTime <= 0f)
+        {
+            mainCamera.transform.position = cameraHomePosition;
+            return;
+        }
+        // Calculate shake intensity based on remaining shake time
+        float currentIntensity = Mathf.Clamp01(shakeTime / shakeDuration);
+        float shakeSpeed = 10;
+        
+        // Calculate shake offset using Perlin noise
+        float offsetX = Mathf.PerlinNoise(Time.time * shakeSpeed, 0f) * 2f - 1f;
+        float offsetY = Mathf.PerlinNoise(0f, Time.time * shakeSpeed) * 2f - 1f;
+        Vector3 shakeOffset = new Vector3(offsetX, offsetY, 0f) * shakeIntensity * currentIntensity;
+
+        // Apply shake offset to camera position
+        mainCamera.transform.position = cameraHomePosition + shakeOffset;
+    }
+    
+    public void TriggerShake(float intensity)
+    {
+        shakeIntensity = intensity;
+        shakeDuration = Mathf.Clamp(intensity / 2.5f,0f,1f);
+        shakeStartTime = Time.time;
+        Shake();
     }
 
     private void setScore()

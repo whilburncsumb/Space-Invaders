@@ -145,7 +145,7 @@ public class GridScript : MonoBehaviour
         // Calculate shake offset using Perlin noise
         float offsetX = Mathf.PerlinNoise(Time.time * shakeSpeed, 0f) * 2f - 1f;
         float offsetY = Mathf.PerlinNoise(0f, Time.time * shakeSpeed) * 2f - 1f;
-        Vector3 shakeOffset = new Vector3(offsetX, offsetY, 0f) * shakeIntensity * currentIntensity;
+        Vector3 shakeOffset = new Vector3(offsetX, offsetY, 0f) * (shakeIntensity * currentIntensity);
 
         // Apply shake offset to camera position
         mainCamera.transform.position = cameraHomePosition + shakeOffset;

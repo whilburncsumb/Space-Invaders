@@ -5,7 +5,10 @@ public class SpriteText : MonoBehaviour
 {
     void Start()
     {
-        string text = $"SCORE: 0000\tHIGH SCORE: 0000\n" +
+        int highScore = PlayerPrefs.GetInt("HighScore", 0);
+        string scoreString = "00000";
+        string highscoreString = highScore.ToString("D5");
+        string text = $"SCORE: " + scoreString + "\tHIGH SCORE: " + highscoreString +
                       $"\n" +
                       $"*SCORE ADVANCE TABLE*\n" +
                       $"<sprite=0> =? MYSTERY\n" +

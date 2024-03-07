@@ -13,10 +13,12 @@ public class SpaceInvader : MonoBehaviour
     public delegate void DeathEventHandler(int pointValue);
     // Declare event for the death event
     public event DeathEventHandler OnDeath;
+    private bool stop;
 
     public void Start()
     {
         anim = GetComponent<Animator>();
+        stop = false;
     }
 
     // Method to call when the space invader dies
@@ -30,11 +32,12 @@ public class SpaceInvader : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.Log("Invader entered collision");
-        if (other.CompareTag("PlayerBullet"))
+        if (other.CompareTag("PlayerBullet") && !stop)
         {
             Destroy(other.gameObject);
             GetComponent<Animator>().SetTrigger("killTrigger");
             Die();
+            stop = true;
         }
     }
 
@@ -81,7 +84,6 @@ public class SpaceInvader : MonoBehaviour
     
     void DestroyEnemy()
     {
-        // Debug.Log("enemy explosion done");
         Destroy(this.gameObject);
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - PlayerBullet
   - EnemyBullet
   - barricade
+  - Saucer
   layers:
   - Default
   - TransparentFX

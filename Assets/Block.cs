@@ -12,16 +12,20 @@ public class Block : MonoBehaviour
     {
         SpriteRenderer rend = GetComponent<SpriteRenderer>();
         health--;
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(this.gameObject);
         }
-        rend.sprite = animationFrames[health-1];
+        else
+        {
+           rend.sprite = animationFrames[health-1]; 
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("block hit!");
+        // Debug.Log("block hit!");
         if (other.CompareTag("EnemyBullet") || other.CompareTag("PlayerBullet"))
         {
             Destroy(other.gameObject);

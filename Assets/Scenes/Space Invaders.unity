@@ -1210,7 +1210,7 @@ MonoBehaviour:
   columnCount: 11
   width: 1.25
   height: 1
-  saucerTransform: {x: 0, y: 0, z: 0}
+  saucerTransform: {x: 10, y: 4, z: 0}
   startSpeed: 0.5
   advanceSpeed: 0.5
   goingLeft: 0
@@ -1494,6 +1494,14 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1369001421}
+    - target: {fileID: 3499126673951357853, guid: f087ad607371140a3aa396d7c0af3105, type: 3}
+      propertyPath: saucerTransform.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499126673951357853, guid: f087ad607371140a3aa396d7c0af3105, type: 3}
+      propertyPath: saucerTransform.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3902166126225459550, guid: f087ad607371140a3aa396d7c0af3105, type: 3}
       propertyPath: m_Name
       value: Grid

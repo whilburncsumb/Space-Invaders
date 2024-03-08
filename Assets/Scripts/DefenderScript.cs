@@ -5,17 +5,18 @@ public class Defender : MonoBehaviour
 {
   public GameObject invader;
   public GameObject bullet;
+  public GameObject grid;
   public Transform shottingOffset;
   public float moveSpeed;
   public Animator anim;
-  private AudioSource audio;
+  private AudioSource _audio;
   public AudioClip explosion;
 
   private void Start()
   {
     anim = GetComponent<Animator>();
     anim.speed = 0;
-    audio = GetComponent<AudioSource>();
+    _audio = GetComponent<AudioSource>();
   }
 
   // Update is called once per frame
@@ -24,7 +25,7 @@ public class Defender : MonoBehaviour
       if (Input.GetKeyDown(KeyCode.Space))
       {
         GameObject shot = Instantiate(bullet, shottingOffset.position, Quaternion.identity);
-        audio.Play();
+        _audio.Play();
         Destroy(shot, 3f);
       }
       
@@ -47,8 +48,9 @@ public class Defender : MonoBehaviour
         //play death animation
         anim.speed = 1;
         moveSpeed = 0;
-        audio.clip = explosion;
-        audio.Play();
+        _audio.clip = explosion;
+        _audio.Play();
+        grid.GetComponent<GridScript>().TriggerShake(2f);
       }
     }
 

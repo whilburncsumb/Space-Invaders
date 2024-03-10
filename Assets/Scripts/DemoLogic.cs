@@ -26,6 +26,6 @@ public class DemoLogic : MonoBehaviour
         }
         GameObject playerObj ;
         playerObj= GameObject.Find("Defender");
-        Debug.Log(playerObj);
+        // Debug.Log(playerObj);
     }
 }

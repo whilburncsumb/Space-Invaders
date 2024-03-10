@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class GridScript : MonoBehaviour
@@ -28,6 +29,7 @@ public class GridScript : MonoBehaviour
     public GameObject barrier;
     public AudioSource sounds;
     public AudioSource music;
+    public AudioClip yay;
     public float pitch;
     
     public float initialInterval = 1f; // Initial interval between movements
@@ -123,6 +125,18 @@ public class GridScript : MonoBehaviour
             PlayerPrefs.Save();
         }
         setScore();
+        if (invadersLeft <= 0)
+        {
+            //end the game
+            music.Stop();
+            music.pitch = 1;
+            music.loop = false;
+            music.clip = yay;
+            music.Play();
+            player.GetComponent<Defender>().invincible = true;//make sure player cant be hurt after winning
+            StartCoroutine(ShowCredits());
+            return;
+        }
         //Speed up music
         float ratio = 1 - ((float)invadersLeft / (float)maxInvaders);
         // Debug.Log("Ratio: "+ratio);
@@ -216,4 +230,14 @@ public class GridScript : MonoBehaviour
         }
     }
     
+    IEnumerator ShowCredits()
+    {
+        yield return new WaitForSeconds(5f);
+        AsyncOperation async = SceneManager.LoadSceneAsync("CreditsScene");
+        while (!async.isDone)
+        {
+            yield return null;
+        }
+    }
+
 }

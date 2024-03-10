@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Defender : MonoBehaviour
 {
@@ -11,9 +13,11 @@ public class Defender : MonoBehaviour
   public Animator anim;
   private AudioSource _audio;
   public AudioClip explosion;
+  public bool invincible;
 
   private void Start()
   {
+    invincible = false;
     anim = GetComponent<Animator>();
     anim.speed = 0;
     _audio = GetComponent<AudioSource>();
@@ -43,7 +47,7 @@ public class Defender : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
       // Debug.Log("Defender touches trigger");
-      if (other.CompareTag("EnemyBullet"))
+      if (other.CompareTag("EnemyBullet") && !invincible)
       {
         //play death animation
         anim.speed = 1;
@@ -56,6 +60,17 @@ public class Defender : MonoBehaviour
 
     public void Die()
     {
+      StartCoroutine(ShowCredits());
       Destroy(this.gameObject);
+    }
+    
+
+    IEnumerator ShowCredits()
+    {
+      AsyncOperation async = SceneManager.LoadSceneAsync("Credits");
+      while (!async.isDone)
+      {
+        yield return null;
+      }
     }
 }

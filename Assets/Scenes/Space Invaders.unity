@@ -1169,6 +1169,7 @@ MonoBehaviour:
   barrier: {fileID: 0}
   sounds: {fileID: 1461287914}
   music: {fileID: 1461287915}
+  yay: {fileID: 8300000, guid: c023c02ace1153f419e149550b44bb2e, type: 3}
   pitch: 0
   initialInterval: 1
   minInterval: 0.1

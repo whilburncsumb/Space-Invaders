@@ -147,9 +147,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invader: {fileID: 7483517710255911465, guid: 3feeff0f6602b4a9c9fb2d8b9b2038a1, type: 3}
   bullet: {fileID: 2457785739244962049, guid: c56c731cbfb764dbcac413b6a6dfb545, type: 3}
+  grid: {fileID: 0}
   shottingOffset: {fileID: 8125335893176967482}
   moveSpeed: 8
   anim: {fileID: 0}
+  explosion: {fileID: 8300000, guid: 705e1121252b31e47853134c2ffca020, type: 3}
+  failSound: {fileID: 8300000, guid: 15df3f618bf6c0c47ba6404f992afc06, type: 3}
+  invincible: 0
 --- !u!95 &7028526960243600040
 Animator:
   serializedVersion: 5

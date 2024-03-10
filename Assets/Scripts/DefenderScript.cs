@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,7 @@ public class Defender : MonoBehaviour
   public Animator anim;
   private AudioSource _audio;
   public AudioClip explosion;
+  public AudioClip failSound;
   public bool invincible;
 
   private void Start()
@@ -67,7 +69,10 @@ public class Defender : MonoBehaviour
 
     IEnumerator ShowCredits()
     {
-      AsyncOperation async = SceneManager.LoadSceneAsync("Credits");
+      _audio.clip = failSound;
+      _audio.Play();
+      yield return new WaitForSeconds(3f);
+      AsyncOperation async = SceneManager.LoadSceneAsync("CreditsScene");
       while (!async.isDone)
       {
         yield return null;

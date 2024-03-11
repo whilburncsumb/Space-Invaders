@@ -57,13 +57,15 @@ public class Defender : MonoBehaviour
         _audio.clip = explosion;
         _audio.Play();
         grid.GetComponent<GridScript>().TriggerShake(2f);
+        invincible = true;
       }
     }
 
     public void Die()
     {
       StartCoroutine(ShowCredits());
-      Destroy(this.gameObject);
+      this.GetComponent<SpriteRenderer>().enabled = false;
+      this.GetComponent<BoxCollider2D>().enabled = false;
     }
     
 
@@ -71,7 +73,7 @@ public class Defender : MonoBehaviour
     {
       _audio.clip = failSound;
       _audio.Play();
-      yield return new WaitForSeconds(3f);
+      yield return new WaitForSeconds(1.5f);
       AsyncOperation async = SceneManager.LoadSceneAsync("CreditsScene");
       while (!async.isDone)
       {

@@ -72,7 +72,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5902563, y: 1.1400001}
+    oldSize: {x: 1.570462, y: 1.13}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -154,6 +154,9 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: 705e1121252b31e47853134c2ffca020, type: 3}
   failSound: {fileID: 8300000, guid: 15df3f618bf6c0c47ba6404f992afc06, type: 3}
   invincible: 0
+  playerExplosionParticle: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
+  playerFireParticle: {fileID: 1478314613700728, guid: be6847dd39ab95f4daa2ed98e4f90564, type: 3}
+  playerMuzzleParticle: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
 --- !u!95 &7028526960243600040
 Animator:
   serializedVersion: 5

@@ -84,18 +84,20 @@ public class GridScript : MonoBehaviour
 
                 // Spawn the prefab at the calculated position
                 var invader = Instantiate(spaceInvader, position, Quaternion.identity, transform);
-                invader.GetComponent<SpaceInvader>().OnDeath += OnInvaderDeath;//subscribe to death of the invader
+                SpaceInvader script = invader.GetComponent<SpaceInvader>();
+                script.OnDeath += OnInvaderDeath;//subscribe to death of the invader
+                script.demoMode = false;
                 if (row == 0)
                 {
-                    invader.GetComponent<SpaceInvader>().setType(0);
+                    script.setType(0);
                 }
                 else if (row >= 1 && row <= 2)
                 {
-                    invader.GetComponent<SpaceInvader>().setType(1);
+                    script.setType(1);
                 }
                 else
                 {
-                    invader.GetComponent<SpaceInvader>().setType(2);
+                    script.setType(2);
                 }
             }
         }

@@ -16,6 +16,11 @@ public class DemoLogic : MonoBehaviour
     {
         StartCoroutine(FindPlayer());
     }
+    
+    public void StartCredits()
+    {
+        StartCoroutine(LoadCredits());
+    }
 
     IEnumerator FindPlayer()
     {
@@ -27,5 +32,14 @@ public class DemoLogic : MonoBehaviour
         GameObject playerObj ;
         playerObj= GameObject.Find("Defender");
         // Debug.Log(playerObj);
+    }
+    
+    IEnumerator LoadCredits()
+    {
+        AsyncOperation async = SceneManager.LoadSceneAsync("CreditsScene");
+        while (!async.isDone)
+        {
+            yield return null;
+        }
     }
 }

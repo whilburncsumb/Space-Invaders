@@ -14,11 +14,13 @@ public class SpaceInvader : MonoBehaviour
     // Declare event for the death event
     public event DeathEventHandler OnDeath;
     private bool stop;
+    public bool demoMode = true;
 
     public void Start()
     {
         anim = GetComponent<Animator>();
         stop = false;
+        setType(invaderType);
     }
 
     // Method to call when the space invader dies
@@ -47,7 +49,7 @@ public class SpaceInvader : MonoBehaviour
         int randomNumber = Random.Range(0, 1000);
 
         // Check if the random number is within the spawn chance range
-        if (randomNumber < spawnChance)
+        if (randomNumber < spawnChance && demoMode == false)
         {
             // Spawn the bullet prefab
             GameObject shot = Instantiate(bullet, transform.position, Quaternion.identity);

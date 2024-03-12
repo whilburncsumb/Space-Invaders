@@ -127,7 +127,7 @@ public class GridScript : MonoBehaviour
             PlayerPrefs.Save();
         }
         setScore();
-        if (invadersLeft <= 0)
+        if (invadersLeft <= 0 && pointValue!=100)
         {
             //end the game
             music.Stop();

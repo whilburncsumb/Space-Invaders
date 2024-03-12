@@ -21,7 +21,7 @@ public class Defender : MonoBehaviour
   {
     invincible = false;
     anim = GetComponent<Animator>();
-    anim.speed = 0;
+    anim.speed = 1;
     _audio = GetComponent<AudioSource>();
   }
 
@@ -52,7 +52,7 @@ public class Defender : MonoBehaviour
       if (other.CompareTag("EnemyBullet") && !invincible)
       {
         //play death animation
-        anim.speed = 1;
+        anim.Play("defenderExplosion");
         moveSpeed = 0;
         _audio.clip = explosion;
         _audio.Play();

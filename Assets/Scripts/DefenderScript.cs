@@ -78,7 +78,6 @@ public class Defender : MonoBehaviour
 
     public void spawnFlames()
     {
-      Debug.Log("spawning fire");
       Instantiate(playerFireParticle, transform.position + Vector3.down*.5f, Quaternion.identity);
       _audio.clip = failSound;
       _audio.Play();

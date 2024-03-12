@@ -7,6 +7,8 @@ public class Block : MonoBehaviour
 {
     public int health = 4;
     public Sprite[] animationFrames;
+    //prefab particle systems
+    public GameObject blockDustParticle;
 
     public void lowerHealth()
     {
@@ -29,6 +31,7 @@ public class Block : MonoBehaviour
         if (other.CompareTag("EnemyBullet") || other.CompareTag("PlayerBullet"))
         {
             Destroy(other.gameObject);
+            Instantiate(blockDustParticle, transform.position, Quaternion.identity);
             lowerHealth();
         }
     }

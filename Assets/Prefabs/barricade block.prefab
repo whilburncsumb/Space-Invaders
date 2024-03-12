@@ -104,6 +104,7 @@ MonoBehaviour:
   - {fileID: 1259421439, guid: 33022ad20244e4f25abbf556e29176e1, type: 3}
   - {fileID: 1166107729, guid: 33022ad20244e4f25abbf556e29176e1, type: 3}
   - {fileID: 892138183, guid: 33022ad20244e4f25abbf556e29176e1, type: 3}
+  blockDustParticle: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00, type: 3}
 --- !u!61 &2404754756340920182
 BoxCollider2D:
   m_ObjectHideFlags: 0

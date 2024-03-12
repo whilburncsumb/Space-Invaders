@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invader: {fileID: 7483517710255911465, guid: 3feeff0f6602b4a9c9fb2d8b9b2038a1, type: 3}
-  bullet: {fileID: 2457785739244962049, guid: c56c731cbfb764dbcac413b6a6dfb545, type: 3}
+  bullet: {fileID: 2457785739244962049, guid: d4511b14daaa37c468a74ed386b2583f, type: 3}
   grid: {fileID: 0}
   shottingOffset: {fileID: 8125335893176967482}
   moveSpeed: 8

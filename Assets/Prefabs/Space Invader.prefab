@@ -71,7 +71,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.3603804, y: 1.7800001}
+    oldSize: {x: 2.3606944, y: 1.76}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -169,3 +169,6 @@ MonoBehaviour:
   points: 20
   spawnChance: 1
   bullet: {fileID: 2457785739244962049, guid: 8a4523de74c844970865ba324fda1542, type: 3}
+  demoMode: 1
+  invaderExplosionParticle: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
+  invaderMuzzleParticle: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}

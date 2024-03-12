@@ -15,6 +15,10 @@ public class SpaceInvader : MonoBehaviour
     public event DeathEventHandler OnDeath;
     private bool stop;
     public bool demoMode = true;
+    
+    //prefab particle systems
+    public GameObject invaderExplosionParticle;
+    public GameObject invaderMuzzleParticle;
 
     public void Start()
     {
@@ -38,6 +42,9 @@ public class SpaceInvader : MonoBehaviour
         {
             Destroy(other.gameObject);
             GetComponent<Animator>().SetTrigger("killTrigger");
+            GameObject particle = Instantiate(invaderExplosionParticle, transform.position, Quaternion.identity);
+            var mainModule = particle.GetComponent<ParticleSystem>().main;
+            // mainModule.startSizeMultiplier = 0.3f;
             Die();
             stop = true;
         }
@@ -53,6 +60,7 @@ public class SpaceInvader : MonoBehaviour
         {
             // Spawn the bullet prefab
             GameObject shot = Instantiate(bullet, transform.position, Quaternion.identity);
+            Instantiate(invaderMuzzleParticle, transform.position+Vector3.down*.2f, Quaternion.Euler(90, 0, 0));
             Destroy(shot, 3f);
         }
     }

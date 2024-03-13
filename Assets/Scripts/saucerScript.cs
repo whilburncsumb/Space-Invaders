@@ -10,6 +10,7 @@ public class FlyingSaucer : MonoBehaviour
     public Animator anim;
     public int points;
     private bool stop;
+    public GameObject invaderExplosionParticle;
     
     void Start()
     {
@@ -30,6 +31,7 @@ public class FlyingSaucer : MonoBehaviour
         {
             Destroy(other.gameObject);
             anim.SetTrigger("killTrigger");
+            GameObject particle = Instantiate(invaderExplosionParticle, transform.position, Quaternion.identity);
             Die();
             stop = true;
         }
